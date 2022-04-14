@@ -3,6 +3,8 @@
 To use this chart do 
 
 helm repo add spiffecharts https://jollyaakash.github.i/SpiffeChart/ 
+
+Update your Helm repo cache -
 helm repo update
 
 To install -
