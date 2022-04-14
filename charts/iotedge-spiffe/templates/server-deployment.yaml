@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iotedge-spiffe-server
+  labels:
+    app: iotedge-spiffe-server
+spec:
+  selector:
+    matchLabels:
+      app: iotedge-spiffe-server
+  template:
+    metadata:
+      labels:
+        app: iotedge-spiffe-server
+    spec:
+      serviceAccountName: iotedge-spiffe-server
+      containers:
+        - name: iotedge-spiffe-server
+          image: dmqttdemo.azurecr.io/identity/server:latest
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          ports:
+            - containerPort: 8443
+          volumeMounts:
+            - name: config
+              mountPath: /mnt/config 
+            - name: iotedge-spiffe-server-socket
+              mountPath: /run/iotedge/sockets/                                    
+        - name: iotedge-spiffe-identity-manager
+          image: lefitchereg1.azurecr.io/identity-manager
+          securityContext:
+            privileged: true
+            allowPrivilegeEscalation: true
+          volumeMounts:
+            - name: iotedge-spiffe-server-socket
+              mountPath: /run/iotedge/sockets/                    
+      volumes:
+        - name: iotedge-spiffe-server-socket
+          hostPath:
+            path: /run/iotedge/sockets/
+            type: DirectoryOrCreate      
+        - name: config
+          configMap:
+            name: iotedge-spiffe-server           

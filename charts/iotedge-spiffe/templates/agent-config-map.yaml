@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iotedge-spiffe-agent
+data:
+  Config.toml: |
+    socket_path = "/run/iotedge/sockets/workloadapi.sock"
+    trust_domain = "iotedge"
+
+    [server-config]
+    address = "iotedge-spiffe-server"
+    port = 8443
+
+    [trust-bundle-config]
+    max_retry = 2
+    wait_retry_sec = 2
+
+    [node_attestation_config]
+    type = "PSAT"
+    [node_attestation_config.content]
+    token_path = "/var/run/secrets/tokens/iotedge-spiffe-agent"
+
+    [workload_attestation_config]
+    type = "K8S"
+    [workload_attestation_config.content]
