@@ -16,7 +16,7 @@ spec:
       serviceAccountName: iotedge-spiffe-server
       containers:
         - name: iotedge-spiffe-server
-          image: dmqttdemo.azurecr.io/identity/server:latest
+          image: lefitchereg1.azurecr.io/identity/server:debug_build
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
