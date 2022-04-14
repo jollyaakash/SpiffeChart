@@ -19,7 +19,7 @@ spec:
       serviceAccountName: iotedge-spiffe-agent
       containers:
         - name: iotedge-spiffe-agent
-          image:  lefitchereg1.azurecr.io/identity/agent:debug_build
+          image:  lefitchereg1.azurecr.io/identity/agent:ubuntu_debug
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
