@@ -23,8 +23,6 @@ spec:
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
-          command: ["sleep"]
-          args: ["1000000000"]
           env:
             - name: NODE_NAME
               valueFrom:
