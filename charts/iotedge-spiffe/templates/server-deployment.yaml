@@ -17,9 +17,6 @@ spec:
       containers:
         - name: iotedge-spiffe-server
           image: lefitchereg1.azurecr.io/identity/server:ubuntu_debug
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
           ports:
             - containerPort: 8443
           volumeMounts:

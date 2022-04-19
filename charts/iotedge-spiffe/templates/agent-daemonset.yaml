@@ -20,9 +20,6 @@ spec:
       containers:
         - name: iotedge-spiffe-agent
           image:  lefitchereg1.azurecr.io/identity/agent:ubuntu_debug
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
           env:
             - name: NODE_NAME
               valueFrom:
