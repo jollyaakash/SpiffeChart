@@ -26,9 +26,6 @@ spec:
               mountPath: /run/iotedge/sockets/                                    
         - name: iotedge-spiffe-identity-manager
           image: lefitchereg1.azurecr.io/identity-manager
-          securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
           volumeMounts:
             - name: iotedge-spiffe-server-socket
               mountPath: /run/iotedge/sockets/                    
