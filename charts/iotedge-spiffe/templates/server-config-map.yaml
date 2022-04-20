@@ -37,9 +37,8 @@ data:
     allowed_pod_label_keys = ["pod-name"]
   
   ManagerConfig.toml: |
-    trust_domain  = "SPIFFE ID trust domain"
-
     server_socket_path = "/run/iotedge/sockets/api.sock"
+    trust_domain  = "iotedge"
 
     # Entries
     [[entry]]
