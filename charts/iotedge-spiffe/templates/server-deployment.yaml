@@ -16,7 +16,7 @@ spec:
       serviceAccountName: iotedge-spiffe-server
       containers:
         - name: iotedge-spiffe-server
-          image: lefitchereg1.azurecr.io/identity/server:ubuntu_debug
+          image: lefitchereg1.azurecr.io/identity/server:10
           ports:
             - containerPort: 8443
           volumeMounts:
@@ -25,10 +25,15 @@ spec:
             - name: iotedge-spiffe-server-socket
               mountPath: /run/iotedge/sockets/                                    
         - name: iotedge-spiffe-identity-manager
-          image: lefitchereg1.azurecr.io/identity-manager
+          image: lefitchereg1.azurecr.io/identity/manager:10
           volumeMounts:
             - name: iotedge-spiffe-server-socket
-              mountPath: /run/iotedge/sockets/                    
+              mountPath: /run/iotedge/sockets/  
+            - name: config
+              mountPath: /mnt/config
+          env:
+            normal:
+              CONFIG_PATH: /mnt/config/ManagerConfig.toml                
       volumes:
         - name: iotedge-spiffe-server-socket
           hostPath:
