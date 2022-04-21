@@ -32,8 +32,8 @@ spec:
             - name: config
               mountPath: /mnt/config
           env:
-            normal:
-              CONFIG_PATH: /mnt/config/ManagerConfig.toml                
+            - name: CONFIG_PATH
+              value: /mnt/config/ManagerConfig.toml                
       volumes:
         - name: iotedge-spiffe-server-socket
           hostPath:
