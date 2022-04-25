@@ -10,10 +10,10 @@ data:
     [jwt]
     key_type = "ES256"
     key_ttl = 300
-    ttl = 10
+    ttl = 100
 
     [trust-bundle]
-    refresh_hint = 10
+    refresh_hint = 20
 
     [key-store]
     type = "Disk"
