@@ -10,7 +10,7 @@ data:
     [jwt]
     key_type = "ES256"
     key_ttl = 300
-    ttl = "{{ .Values.server.jwt.ttl }}"
+    ttl = {{ .Values.server.jwt.ttl }}
 
     [trust-bundle]
     refresh_hint = 20
