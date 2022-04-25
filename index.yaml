@@ -3,6 +3,16 @@ entries:
   spiffe-identity:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-04-25T18:26:40.863850205Z"
+    description: An installation package for Iot Edge Spiffe agent/server implementation
+    digest: 82ce51842548892a194044e60ab2dc31a56ca40b63125ec9a4a75b1b535f1172
+    name: spiffe-identity
+    type: application
+    urls:
+    - https://github.com/jollyaakash/SpiffeChart/releases/download/spiffe-identity-0.3.4/spiffe-identity-0.3.4.tgz
+    version: 0.3.4
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-04-25T18:21:24.933039091Z"
     description: An installation package for Iot Edge Spiffe agent/server implementation
     digest: 03f10f970492c0adc22e63f50d9a2160becd73edf89eea49adf5406bda1c64e2
