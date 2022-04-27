@@ -39,7 +39,7 @@ spec:
           image: dmqttdemo.azurecr.io/single-broker-spiffe-init:latest
           env:
           - name: SPIFFE_ENABLED
-            value: {{ .Values.mqtt.spiffe-enabled | quote }}
+            value: {{ .Values.mqtt.spiffe_enabled | quote }}
           volumeMounts:
             - name: iotedge-spiffe-agent-socket
               mountPath: {{ .Values.spiffe.socket.path }}

@@ -16,7 +16,7 @@ spiffe:
   
 
 mqtt:
-  spiffe-enabled: true
+  spiffe_enabled: true
   image:
     repository: dmqttdemo.azurecr.io/single-broker
     tag: anycred
