@@ -15,6 +15,7 @@ helm repo update
 
 To install a Helm release named 'spiffe' from the repo chart with a version (Note using version here 0.3.6) in k8s namespace 'spiffe' do the following-
 ```
+kubectl create namesapce spiffe
 helm install spiffe spiffecharts/spiffe-identity --version 0.3.6 --namespace spiffe
 ```
 
@@ -28,6 +29,7 @@ kubectl get pods -n spiffe
 When you are doing playing around with the chart. To uninstall - 
 ```
 helm uninstall spiffe
+kubectl delete namespace spiffe
 ```
 
 As usual there are multiple values that you can override in the Helm chart, all the possible values are present here - 
