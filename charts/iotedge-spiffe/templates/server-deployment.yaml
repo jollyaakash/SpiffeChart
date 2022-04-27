@@ -16,19 +16,19 @@ spec:
       serviceAccountName: iotedge-spiffe-server
       containers:
         - name: iotedge-spiffe-server
-          image: lefitchereg1.azurecr.io/identity/server:10
+          image: "{{ .Values.spiffe.server.image.repository }}:{{ .Values.spiffe.server.image.tag }}"
           ports:
             - containerPort: 8443
           volumeMounts:
             - name: config
               mountPath: /mnt/config 
             - name: iotedge-spiffe-server-socket
-              mountPath: /run/iotedge/sockets/                                    
+              mountPath: {{ .Values.spiffe.socket.path }}
         - name: iotedge-spiffe-identity-manager
           image: lefitchereg1.azurecr.io/identity/manager:10
           volumeMounts:
             - name: iotedge-spiffe-server-socket
-              mountPath: /run/iotedge/sockets/  
+              mountPath: {{ .Values.spiffe.socket.path }}
             - name: config
               mountPath: /mnt/config
           env:
@@ -37,7 +37,7 @@ spec:
       volumes:
         - name: iotedge-spiffe-server-socket
           hostPath:
-            path: /run/iotedge/sockets/
+            path: {{ .Values.spiffe.socket.path }}
             type: DirectoryOrCreate      
         - name: config
           configMap:

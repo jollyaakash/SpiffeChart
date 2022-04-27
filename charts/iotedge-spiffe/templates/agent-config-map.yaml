@@ -4,7 +4,7 @@ metadata:
   name: iotedge-spiffe-agent
 data:
   Config.toml: |
-    socket_path = "/run/iotedge/sockets/workloadapi.sock"
+    socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.workload }}"
     trust_domain = "iotedge"
 
     [server-config]

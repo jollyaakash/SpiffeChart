@@ -4,13 +4,13 @@ metadata:
   name: iotedge-spiffe-server
 data:
   Config.toml: |
-    socket_path = "/run/iotedge/sockets/api.sock"
+    socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
     trust_domain = "iotedge"
 
     [jwt]
     key_type = "ES256"
     key_ttl = 300
-    ttl = {{ .Values.server.jwt.ttl }}
+    ttl = {{ .Values.spiffe.server.jwt.ttl }}
 
     [trust-bundle]
     refresh_hint = 20
@@ -37,7 +37,7 @@ data:
     allowed_pod_label_keys = ["pod-name"]
   
   ManagerConfig.toml: |
-    server_socket_path = "/run/iotedge/sockets/api.sock"
+    server_socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
     trust_domain  = "iotedge"
 
     # Entries
