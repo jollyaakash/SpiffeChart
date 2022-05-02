@@ -3,20 +3,20 @@ spiffe:
     jwt:
       ttl: 1000
     image:
-      repository: lefitchereg1.azurecr.io/identity/server
-      tag: 10
+      repository: dmqttdemo.azurecr.io/identity/server
+      tag: latest
   socket: 
       path: /run/iotedge/sockets/
       workload: workloadapi.sock
       api: api.sock
   agent:
     image:
-      repository: lefitchereg1.azurecr.io/identity/agent
-      tag: 10
+      repository: dmqttdemo.azurecr.io/identity/agent
+      tag: latest
   
 
 mqtt:
   spiffe_enabled: true
   image:
     repository: dmqttdemo.azurecr.io/single-broker
-    tag: anycred
+    tag: 111
