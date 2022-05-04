@@ -39,3 +39,7 @@ You can simply override using -set or --set-string key too.
 ```
 helm install spiffe spiffecharts/spiffe-identity --version 0.3.6 --namespace spiffe --set spiffe.server.jwt.ttl=100 
 ```
+
+## Testing Purpose
+
+If you just want to test the broker and talk to it using any credentials. Override installation to use an image which allows that by adding *--set-string mqtt.image.tag=anycred*
