@@ -40,7 +40,7 @@ data:
     server_socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
     trust_domain  = "iotedge"
 
-    # Entries
+    # Entries - These are the identities the mqtt broker will work with since it talks to identity manager
     [[entry]]
     spiffe_id = "1"
     spiffe_id_path = "agent"
