@@ -14,6 +14,9 @@ spiffe:
       repository: dmqttdemo.azurecr.io/identity/agent
       tag: latest
   
+identity_manager:
+  sample_identity:
+    name: genericnode
 
 mqtt:
   spiffe_enabled: true

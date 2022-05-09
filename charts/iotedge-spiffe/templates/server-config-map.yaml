@@ -52,7 +52,7 @@ data:
 
     [[entry]]
     spiffe_id = "2"
-    spiffe_id_path = "genericnode"
+    spiffe_id_path = "{{ .Values.identity_manager.sample_identity.name }}"
     [entry.attestation_config]
     type = "WORKLOAD" 
     [entry.attestation_config.content]
