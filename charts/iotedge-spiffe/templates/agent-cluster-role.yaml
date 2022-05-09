@@ -14,10 +14,11 @@ kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: iotedge-spiffe-agent-cluster-role-binding
+  namespace: {{ .Release.Namespace | default "default" | quote}}
 subjects:
 - kind: ServiceAccount
   name: iotedge-spiffe-agent
-  namespace: default   
+  namespace: {{ .Release.Namespace | default "default" | quote}}
 roleRef:
   kind: ClusterRole
   name: iotedge-spiffe-agent-cluster-role
