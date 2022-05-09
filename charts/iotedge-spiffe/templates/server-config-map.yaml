@@ -56,7 +56,7 @@ data:
     [entry.attestation_config]
     type = "WORKLOAD" 
     [entry.attestation_config.content]
-    value = ["PODLABELS:app:genericnode"]
+    value = ["PODLABELS:app:{{ .Values.identity_manager.sample_identity.name }}"]
     plugin = "K8S"
     parent_id = "1"
     [[other_identities]]
