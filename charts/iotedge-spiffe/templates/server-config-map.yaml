@@ -13,7 +13,7 @@ data:
     ttl = {{ .Values.spiffe.server.jwt.ttl }}
 
     [trust-bundle]
-    refresh_hint = 20
+    refresh_hint = 100
 
     [key-store]
     type = "Disk"
