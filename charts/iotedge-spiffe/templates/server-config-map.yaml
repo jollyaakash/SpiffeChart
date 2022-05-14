@@ -52,11 +52,11 @@ data:
 
     [[entry]]
     spiffe_id = "2"
-    spiffe_id_path = "{{ .Values.identity_manager.sample_identity.name }}"
+    spiffe_id_path = "publisher"
     [entry.attestation_config]
     type = "WORKLOAD" 
     [entry.attestation_config.content]
-    value = ["PODLABELS:app:{{ .Values.identity_manager.sample_identity.name }}"]
+    value = ["PODLABELS:app:publisher"]
     plugin = "K8S"
     parent_id = "1"
     [[other_identities]]
@@ -73,5 +73,15 @@ data:
     type = "WORKLOAD" 
     [entry.attestation_config.content]
     value = ["PODLABELS:app:mqttbroker"]
+    plugin = "K8S"
+    parent_id = "1"
+    
+    [[entry]]
+    spiffe_id = "4"
+    spiffe_id_path = "subscriber"
+    [entry.attestation_config]
+    type = "WORKLOAD" 
+    [entry.attestation_config.content]
+    value = ["PODLABELS:app:subscriber"]
     plugin = "K8S"
     parent_id = "1"
