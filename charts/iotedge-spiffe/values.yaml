@@ -2,6 +2,7 @@ spiffe:
   server:
     jwt:
       ttl: 1000
+      key_ttl: 300
     image:
       repository: dmqttdemo.azurecr.io/identity/server
       tag: latest
