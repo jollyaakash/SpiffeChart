@@ -15,6 +15,9 @@ spiffe:
       repository: dmqttdemo.azurecr.io/identity/agent
       tag: latest
 
+identitymanager:
+  configToml: 
+
 mqtt:
   spiffe_enabled: true
   image:

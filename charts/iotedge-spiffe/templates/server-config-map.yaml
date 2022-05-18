@@ -40,4 +40,8 @@ data:
     server_socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
     trust_domain  = "iotedge"
 
+{{- if eq (include "isIdentityManagerFileProvided" .) "true" -}} {{/* <--- operand used in spring function surrounded by `{{ }}` */}}
+{{ .Values.identitymanager.configToml | indent 4}}
+{{else}}
 {{ .Files.Get "identitymanager-config.toml" | indent 4}}
+{{- end }}
