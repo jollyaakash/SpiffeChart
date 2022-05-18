@@ -1,8 +1,8 @@
 spiffe:
   server:
     jwt:
-      ttl: 1000
-      key_ttl: 300
+      ttl: 100
+      key_ttl: 1000
     image:
       repository: dmqttdemo.azurecr.io/identity/server
       tag: latest
@@ -14,10 +14,6 @@ spiffe:
     image:
       repository: dmqttdemo.azurecr.io/identity/agent
       tag: latest
-  
-identity_manager:
-  sample_identity:
-    name: genericnode
 
 mqtt:
   spiffe_enabled: true

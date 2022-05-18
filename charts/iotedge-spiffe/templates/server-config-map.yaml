@@ -40,48 +40,4 @@ data:
     server_socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
     trust_domain  = "iotedge"
 
-    # Entries - These are the identities the mqtt broker will work with since it talks to identity manager
-    [[entry]]
-    spiffe_id = "1"
-    spiffe_id_path = "agent"
-    [entry.attestation_config]
-    type = "NODE" 
-    [entry.attestation_config.content]
-    value = ["AGENTSERVICEACCOUNT:iotedge-spiffe-agent"]
-    plugin = "PSAT"
-
-    [[entry]]
-    spiffe_id = "2"
-    spiffe_id_path = "publisher"
-    [entry.attestation_config]
-    type = "WORKLOAD" 
-    [entry.attestation_config.content]
-    value = ["PODLABELS:app:publisher"]
-    plugin = "K8S"
-    parent_id = "1"
-    [[other_identities]]
-    type = "IOTHUB"
-    content = {iot_hub_hostname = "myhub", device_id = "mydevice", module_id = "modid" }
-    [[other_identities]]
-    type = "CUSTOM"
-    content = "full json here"
-
-    [[entry]]
-    spiffe_id = "3"
-    spiffe_id_path = "mqttbroker"
-    [entry.attestation_config]
-    type = "WORKLOAD" 
-    [entry.attestation_config.content]
-    value = ["PODLABELS:app:mqttbroker"]
-    plugin = "K8S"
-    parent_id = "1"
-    
-    [[entry]]
-    spiffe_id = "4"
-    spiffe_id_path = "subscriber"
-    [entry.attestation_config]
-    type = "WORKLOAD" 
-    [entry.attestation_config.content]
-    value = ["PODLABELS:app:subscriber"]
-    plugin = "K8S"
-    parent_id = "1"
+{{ .Files.Get "identitymanager-config.toml" | indent 4}}
