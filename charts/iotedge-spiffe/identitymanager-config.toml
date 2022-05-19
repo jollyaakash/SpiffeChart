@@ -37,3 +37,13 @@ type = "WORKLOAD"
 value = ["PODLABELS:app:subscriber"]
 plugin = "K8S"
 parent_id = "1"
+
+[[entry]]
+spiffe_id = "5"
+spiffe_id_path = "bulkpublisher"
+[entry.attestation_config]
+type = "WORKLOAD"
+[entry.attestation_config.content]
+value = ["PODLABELS:app:bulkpublisher"]
+plugin = "K8S"
+parent_id = "1"
