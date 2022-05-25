@@ -54,13 +54,3 @@ jobs:
         working-directory: charts/E4K/charts/e4kmqtt
         run: |
           helm push e4kmqtt-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.CHART_ACR_REPO_NAME }}/
-
-      - name: Package dmqtt helm chart locally
-        working-directory: charts/dmqtt
-        run: |
-          helm package .
-      
-      - name: Publish dmqtt helm chart to Acr
-        working-directory: charts/dmqtt
-        run: |
-          helm push edge-dmqtt-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.CHART_ACR_REPO_NAME }}/    
