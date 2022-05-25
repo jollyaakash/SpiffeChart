@@ -22,4 +22,4 @@ mqtt:
   spiffe_enabled: true
   image:
     repository: dmqttdemo.azurecr.io/single-broker
-    tag: 111
+    tag: 160
