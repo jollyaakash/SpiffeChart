@@ -5,7 +5,7 @@ on: [workflow_dispatch]
 env:
   HELM_EXPERIMENTAL_OCI: 1
   HELM_VERSION_TO_INSTALL: 3.8.0-linux-amd64.zip
-  ACR_REPO_NAME: helm
+  CHART_ACR_REPO_NAME: helm
   
 jobs:
   build:
@@ -16,21 +16,51 @@ jobs:
       - uses: actions/checkout@v2
         name: checkout repo
       
-      - name: install helm
+      - name: Install helm
         uses: Azure/setup-helm@v1
         with:
           version: ${{ env.HELM_VERSION_TO_INSTALL }}# default is latest
           
-      - name: login to acr using helm
+      - name: Login to Acr using Helm
         run: |
           echo ${{ secrets.ACR_CHART_PASSWORD }} | helm registry login ${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io --username ${{ secrets.ACR_CHART_USERNAME }} --password-stdin 
-          
-      - name: save helm chart to local registry
-        working-directory: charts/iotedge-spiffe
+
+      - name: Package E4K helm chart locally
+        working-directory: charts/E4K
         run: |
           helm package .
       
-      - name: publish chart to acr
-        working-directory: charts/iotedge-spiffe
+      - name: Publish E4K chart to Acr
+        working-directory: charts/E4K
         run: |
-          helm push edge-spiffe-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.ACR_REPO_NAME }}/
+          helm push az-e4k-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.CHART_ACR_REPO_NAME }}/
+
+      - name: Package spiffe helm chart locally
+        working-directory: charts/E4K/charts/e4kspiffe
+        run: |
+          helm package .
+      
+      - name: Publish spiffe chart to Acr
+        working-directory: charts/E4K/charts/e4kspiffe
+        run: |
+          helm push e4kspiffe-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.CHART_ACR_REPO_NAME }}/
+
+      - name: Package single node mqtt helm chart locally
+        working-directory: charts/E4K/charts/e4kmqtt
+        run: |
+          helm package .
+      
+      - name: Publish single node mqtt chart to Acr
+        working-directory: charts/E4K/charts/e4kmqtt
+        run: |
+          helm push e4kmqtt-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.CHART_ACR_REPO_NAME }}/
+
+      - name: Package dmqtt helm chart locally
+        working-directory: charts/dmqtt
+        run: |
+          helm package .
+      
+      - name: Publish dmqtt helm chart to Acr
+        working-directory: charts/dmqtt
+        run: |
+          helm push edge-dmqtt-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.CHART_ACR_REPO_NAME }}/    
