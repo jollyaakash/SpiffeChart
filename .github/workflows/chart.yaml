@@ -34,9 +34,9 @@ jobs:
       - name: save helm chart to local registry
         working-directory: charts
         run: |
-          helm package iotedge-spiffe/ --version ${{ github.event.inputs.chartVersion }}
+          helm package iotedge-spiffe/
       
       - name: publish chart to acr
         working-directory: charts
         run: |
-          helm push edge-spiffe-${{ github.event.inputs.chartVersion }}.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.ACR_REPO_NAME }}/
+          helm push edge-spiffe-*.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/${{ env.ACR_REPO_NAME }}/
