@@ -37,5 +37,6 @@ jobs:
           helm package iotedge-spiffe/ --version ${{ github.event.inputs.chartVersion }}
       
       - name: publish chart to acr
+        working-directory: charts
         run: |
           helm push spiffe-identity-${{ github.event.inputs.chartVersion }}.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/helm/
