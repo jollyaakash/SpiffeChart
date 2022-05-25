@@ -1,12 +1,6 @@
 name: "charts"
 
-on: 
-  workflow_dispatch:
-    inputs:
-      chartVersion:
-        description: 'The Chart version to package/push with'     
-        required: true
-        default: 'latest'
+on: [workflow_dispatch]
 
 env:
   HELM_EXPERIMENTAL_OCI: 1
