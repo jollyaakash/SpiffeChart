@@ -17,6 +17,13 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet    
       serviceAccountName: iotedge-spiffe-agent
+      initContainers:
+        - name: init-server
+          # This is a small image with wait-for-it, choose whatever image
+          # you prefer that waits for a service to be up. This image is built
+          # from https://github.com/lqhl/wait-for-it
+          image: gcr.io/spiffe-io/wait-for-it
+          args: ["-t", "30", "iotedge-spiffe-server:8443"]
       containers:
         - name: iotedge-spiffe-agent
           image: "{{ .Values.spiffe.agent.image.repository }}:{{ .Values.spiffe.agent.image.tag }}"
