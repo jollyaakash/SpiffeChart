@@ -10,7 +10,7 @@ on:
 
 env:
   HELM_EXPERIMENTAL_OCI: 1
-  HELM_VERSION_TO_INSTALL: 3.6.3-linux-amd64.zip
+  HELM_VERSION_TO_INSTALL: 3.8.0-linux-amd64.zip
   ACR_REPO_NAME: helm/spiffe
   
 jobs:
@@ -34,8 +34,8 @@ jobs:
       - name: save helm chart to local registry
         working-directory: charts
         run: |
-          helm chart save iotedge-spiffe/ ${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/helm/spiffe:${{ github.event.inputs.chartVersion }}
+          helm package iotedge-spiffe/ --version ${{ github.event.inputs.chartVersion }}
       
       - name: publish chart to acr
         run: |
-          helm chart push ${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/helm/spiffe:${{ github.event.inputs.chartVersion }}
+          helm push spiffe-identity-${{ github.event.inputs.chartVersion }}.tgz  oci://${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/helm/
