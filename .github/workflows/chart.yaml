@@ -33,7 +33,7 @@ jobs:
           
       - name: save helm chart to local registry
         run: |
-          helm chart save $/src/charts/iotedge-spiffe/ ${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/helm/spiffe:${{ github.event.inputs.chartVersion }}
+          helm chart save /charts/iotedge-spiffe/ ${{ secrets.ACR_CHART_REGISTRY }}.azurecr.io/helm/spiffe:${{ github.event.inputs.chartVersion }}
       
       - name: publish chart to acr
         run: |
