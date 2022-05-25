@@ -10,7 +10,7 @@ on:
 
 env:
   HELM_EXPERIMENTAL_OCI: 1
-  HELM_VERSION_TO_INSTALL: 3.6.3-linux-amd64
+  HELM_VERSION_TO_INSTALL: 3.6.3-linux-amd64.zip
   ACR_REPO_NAME: helm/spiffe
   
 jobs:
