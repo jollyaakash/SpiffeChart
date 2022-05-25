@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 0.1.0
+description: 'An installation package for Azure Edge Spiffe agent/server implementation'
+name: e4kspiffe
+type: application
+version: 0.1.0

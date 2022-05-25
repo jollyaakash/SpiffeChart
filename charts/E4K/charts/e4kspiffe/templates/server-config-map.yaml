@@ -4,13 +4,13 @@ metadata:
   name: iotedge-spiffe-server
 data:
   Config.toml: |
-    socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
+    socket_path = "{{ .Values.socket.path }}{{ .Values.socket.api }}"
     trust_domain = "iotedge"
 
     [jwt]
     key_type = "ES256"
-    key_ttl = {{ .Values.spiffe.server.jwt.key_ttl }}
-    ttl = {{ .Values.spiffe.server.jwt.ttl }}
+    key_ttl = {{ .Values.server.jwt.key_ttl }}
+    ttl = {{ .Values.server.jwt.ttl }}
 
     [trust-bundle]
     refresh_hint = 100
@@ -37,7 +37,7 @@ data:
     allowed_pod_label_keys = ["pod-name"]
   
   ManagerConfig.toml: |
-    server_socket_path = "{{ .Values.spiffe.socket.path }}{{ .Values.spiffe.socket.api }}"
+    server_socket_path = "{{ .Values.socket.path }}{{ .Values.socket.api }}"
     trust_domain  = "iotedge"
 
 {{- if eq (include "isIdentityManagerFileProvided" .) "true" -}} {{/* <--- operand used in spring function surrounded by `{{ }}` */}}

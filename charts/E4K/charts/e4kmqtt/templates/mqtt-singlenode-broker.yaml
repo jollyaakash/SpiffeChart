@@ -28,23 +28,23 @@ spec:
     spec:
       containers:
         - name: mqttbroker
-          image: "{{ .Values.mqtt.image.repository }}:{{ .Values.mqtt.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: 1883
           volumeMounts:
             - name: iotedge-spiffe-agent-socket
-              mountPath: {{ .Values.spiffe.socket.path }}
+              mountPath: {{ .Values.spiffe.socket_path }}
       initContainers:
         - name: spiffe-workload-socket
           image: dmqttdemo.azurecr.io/single-broker-spiffe-init:latest
           env:
           - name: SPIFFE_ENABLED
-            value: {{ .Values.mqtt.spiffe_enabled | quote }}
+            value: {{ .Values.spiffe_enabled | quote }}
           volumeMounts:
             - name: iotedge-spiffe-agent-socket
-              mountPath: {{ .Values.spiffe.socket.path }}
+              mountPath: {{ .Values.spiffe.socket_path }}
       volumes:
         - name: iotedge-spiffe-agent-socket
           hostPath:
-            path: {{ .Values.spiffe.socket.path }}
+            path: {{ .Values.spiffe.socket_path }}
             type: DirectoryOrCreate

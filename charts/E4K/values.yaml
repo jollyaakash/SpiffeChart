@@ -1,4 +1,10 @@
 spiffe:
+  enabled: true
+
+mqtt:
+  enabled: false
+
+e4kspiffe:
   server:
     jwt:
       ttl: 100
@@ -14,12 +20,12 @@ spiffe:
     image:
       repository: dmqttdemo.azurecr.io/identity/agent
       tag: latest
+  identitymanager:
+    configToml: 
 
-identitymanager:
-  configToml: 
-
-mqtt:
-  spiffe_enabled: true
+e4kmqtt:
+  spiffe:
+    enabled: true
   image:
     repository: dmqttdemo.azurecr.io/single-broker
     tag: 160

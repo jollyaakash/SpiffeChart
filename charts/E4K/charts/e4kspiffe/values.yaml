@@ -1,0 +1,18 @@
+server:
+  jwt:
+    ttl: 100
+    key_ttl: 1000
+  image:
+    repository: dmqttdemo.azurecr.io/identity/server
+    tag: latest
+socket: 
+    path: /run/iotedge/sockets/
+    workload: workloadapi.sock
+    api: api.sock
+agent:
+  image:
+    repository: dmqttdemo.azurecr.io/identity/agent
+    tag: latest
+
+identitymanager:
+  configToml: 

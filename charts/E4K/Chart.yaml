@@ -1,0 +1,12 @@
+apiVersion: v2
+appVersion: 0.1.0
+description: 'An installation package for Edge E4K components which installs SPIFFE server/agent and single node mqtt broker'
+name: az-e4k
+type: application
+version: 0.1.0
+
+dependencies:
+  - name: e4kspiffe
+    condition: spiffe.enabled
+  - name: e4kmqtt
+    condition: mqtt.enabled

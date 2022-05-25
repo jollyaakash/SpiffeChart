@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 0.1.0
+description: 'An installation package for Azure Edge single node broker implementation'
+name: e4kmqtt
+type: application
+version: 0.1.0

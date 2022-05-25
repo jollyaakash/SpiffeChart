@@ -1,0 +1,6 @@
+spiffe:
+  enabled: true
+  socket_path: /run/iotedge/sockets/
+image:
+  repository: dmqttdemo.azurecr.io/single-broker
+  tag: 160
