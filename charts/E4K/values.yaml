@@ -2,7 +2,7 @@ spiffe:
   enabled: true
 
 mqtt:
-  enabled: false
+  enabled: true
 
 e4kspiffe:
   server:
